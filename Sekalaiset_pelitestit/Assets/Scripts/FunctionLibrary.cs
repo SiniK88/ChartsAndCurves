@@ -8,9 +8,9 @@ public static class FunctionLibrary {
     //public delegate float Function(float x, float z, float t);
     public delegate Vector3 Function(float u, float v, float t);
 
-    public enum FunctionName { Wave, MultiWave, Ripple, Sphere }
+    public enum FunctionName { Wave, MultiWave, Ripple, Sphere, Test1 }
 
-    static Function[] functions = { Wave, MultiWave, Ripple, Sphere };
+    static Function[] functions = { Wave, MultiWave, Ripple, Sphere, Test1 };
     public static Function GetFunction(FunctionName name) {
         return functions[(int)name];
     }
@@ -22,8 +22,16 @@ public static class FunctionLibrary {
 
     public static Vector3 Wave(float u, float v, float t) {
         Vector3 p;
+        p.x = u * 20;
+        p.y = Sin(PI * (u + v + t)) * 10 ;
+        p.z = v * 20;
+        return p;
+    }
+
+    public static Vector3 Test1(float u, float v, float t) {
+        Vector3 p;
         p.x = u;
-        p.y = Sin(PI * (u + v + t));
+        p.y = p.x;
         p.z = v;
         return p;
     }
@@ -39,9 +47,20 @@ public static class FunctionLibrary {
         float y = Sin(PI * (4f * d - t));
         return y / (1f + 10f * d);
     }
-    */ 
+    */
 
     public static Vector3 MultiWave(float u, float v, float t) {
+        Vector3 p;
+        p.x = u;
+        p.y = Sin(PI * (u + t * 0.5f));
+        p.y +=  Sin(2f * PI * (v + t));
+        p.y += Sin(PI * (u + v + t * 0.25f));
+        p.y *= 1f / 2.5f ;
+        p.z = v;
+        return p;
+    }
+
+    /*public static Vector3 MultiWave(float u, float v, float t) {
         Vector3 p;
         p.x = u;
         p.y = Sin(PI * (u + 0.5f * t));
@@ -50,7 +69,8 @@ public static class FunctionLibrary {
         p.y *= 1f / 2.5f;
         p.z = v;
         return p;
-    }
+    }*/
+
 
     public static Vector3 Ripple(float u, float v, float t) {
         float d = Sqrt(u * u + v * v);

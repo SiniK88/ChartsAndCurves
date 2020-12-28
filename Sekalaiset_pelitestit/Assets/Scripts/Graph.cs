@@ -21,8 +21,9 @@ public class Graph : MonoBehaviour
 
     private void Awake() {
         float step = 2f / resolution;
-        //var position = Vector3.zero; 
-        var scale = Vector3.one * step ;
+        var position = Vector3.right; 
+        var scale = Vector3.one ;
+        //var scale = Vector3.one * step;
         points = new Transform[resolution * resolution];
         for (int i = 0, x = 0, z = 0; i < points.Length; i++, x++) {
             //if (x == resolution) {
@@ -33,7 +34,7 @@ public class Graph : MonoBehaviour
             //position.x = (x + 0.5f) * step - 1f;
             //position.z = (z + 0.5f) * step - 1f;
             //position.y = position.x * position.x * position.x;
-            //point.localPosition = position;
+            point.localPosition = position;
             point.localScale = scale;
 
             points[i] = point; 
@@ -45,13 +46,34 @@ public class Graph : MonoBehaviour
 
     void Update() {
         FunctionLibrary.Function f = FunctionLibrary.GetFunction(function);
-        float time = Time.time;
+        float time = Time.time * 0.2f;
         float step = 2f / resolution;
+        //float step = 1f;
         float v = 0.5f * step - 1f;
         for (int i = 0, x = 0, z = 0; i < points.Length; i++, x++) {
             if (x == resolution) {
                 x = 0;
                 z += 1;
+                //v = (z + 0.5f) * step - 1f;
+                v = (z + 0.5f) * step - 1f;
+            }
+            float u = (x + 0.5f) * step - 1f;
+            points[i].localPosition = f(u, v, time);
+        }
+    }
+
+    /*void Update() {
+        FunctionLibrary.Function f = FunctionLibrary.GetFunction(function);
+        float time = Time.time;
+        //float step = 2f / resolution;
+        float step = 1f;
+        //float v = 0.5f * step - 1f;
+        float v = 0.1f;
+        for (int i = 0, x = 0, z = 0; i < points.Length; i++, x++) {
+            if (x == resolution) {
+                x = 0;
+                z += 1;
+                //v = (z + 0.5f) * step - 1f;
                 v = (z + 0.5f) * step - 1f;
             }
             float u = (x + 0.5f) * step - 1f;
