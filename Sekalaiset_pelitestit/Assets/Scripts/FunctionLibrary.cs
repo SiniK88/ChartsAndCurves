@@ -8,9 +8,9 @@ public static class FunctionLibrary {
     //public delegate float Function(float x, float z, float t);
     public delegate Vector3 Function(float u, float v, float t);
 
-    public enum FunctionName { Wave, MultiWave, Ripple, Sphere, Test1 }
+    public enum FunctionName { Wave, MultiWave, Ripple, Sphere, Test1, Scatter }
 
-    static Function[] functions = { Wave, MultiWave, Ripple, Sphere, Test1 };
+    static Function[] functions = { Wave, MultiWave, Ripple, Sphere, Test1, Scatter };
     public static Function GetFunction(FunctionName name) {
         return functions[(int)name];
     }
@@ -22,17 +22,28 @@ public static class FunctionLibrary {
 
     public static Vector3 Wave(float u, float v, float t) {
         Vector3 p;
-        p.x = u * 20;
-        p.y = Sin(PI * (u + v + t)) * 10 ;
-        p.z = v * 20;
+        p.x = u * 10;
+        p.y = Sin(PI * (u + v + t)) * 5 ;
+        p.z = v * 10;
         return p;
     }
 
     public static Vector3 Test1(float u, float v, float t) {
         Vector3 p;
-        p.x = u;
-        p.y = p.x;
-        p.z = v;
+        p.x = u * 10; // 20 is for scaling
+        p.y = p.x  ;
+        //p.z = v * 20 ; // and for z axis
+        p.z = 1; // if we don't want to put much to z axis
+        return p;
+    }
+
+    public static Vector3 Scatter(float u, float v, float t) {
+        Vector3 p;
+        float d = Abs(u) * 5;
+        p.x = d * 10;
+        p.y = Sin(4f * PI * d - t ) * 4;
+        //p.z = v * 20 ; // and for z axis
+        p.z = 1; // if we don't want to put much to z axis
         return p;
     }
 
