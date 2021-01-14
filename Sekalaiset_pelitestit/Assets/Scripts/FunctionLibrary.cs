@@ -8,9 +8,9 @@ public static class FunctionLibrary {
     //public delegate float Function(float x, float z, float t);
     public delegate Vector3 Function(float u, float v, float t);
 
-    public enum FunctionName { Wave, MultiWave, Ripple, Sphere, Test1, Scatter }
+    public enum FunctionName { Wave, MultiWave, Ripple, Sphere, Test1, Scatter, Wave2D, Spriral, Test4, Test6, Vittu }
 
-    static Function[] functions = { Wave, MultiWave, Ripple, Sphere, Test1, Scatter };
+    static Function[] functions = { Wave, MultiWave, Ripple, Sphere, Test1, Scatter, Wave2D, Spriral, Test4, Test6, Vittu };
     public static Function GetFunction(FunctionName name) {
         return functions[(int)name];
     }
@@ -25,6 +25,52 @@ public static class FunctionLibrary {
         p.x = u * 10;
         p.y = Sin(PI * (u + v + t)) * 5 ;
         p.z = v * 10;
+        return p;
+    }
+
+    public static Vector3 Wave2D(float u, float v, float t) {
+        Vector3 p;
+        p.x = u * 10;
+        p.y = Sin(PI * (u + t)) * 5;
+        p.z = 1;
+        return p;
+    }
+    public static Vector3 Spriral(float u, float v, float t) {
+        Vector3 p;
+        float a = 1.5f;
+        float b = -2.5f;
+        p.x = (a + b * t) * Cos(t);
+        p.y = (a + b * t) * Sin(t) ;
+        p.z = 1;
+        return p;
+    }
+
+
+    public static Vector3 Vittu(float u, float v, float t) {
+        Vector3 p;
+        p.x = u * 10;
+        p.y = Sin(PI * (p.x + 0.5f * t));
+        p.y = 0.5f * Sin(2f * PI * (p.x + t)) * 5;
+        p.z = 1;
+        return p;
+    }
+
+    public static Vector3 Test6(float u, float v, float t) {
+        Vector3 p;
+        float r = 0.9f * Sin(PI * ( u * 0.5f  + t  ));
+        float s = r * Cos(PI );
+        p.x =  Sin( PI *u) * 10;
+        p.y = r* Cos(PI * u) * 10;
+        p.z = 1;
+        return p;
+    }
+
+
+    public static Vector3 Test4(float u, float v, float t) {
+        Vector3 p;
+        p.x = Cos(u) * Cos(t);
+        p.y = Sin(v) * Sin(t);
+        p.z = 1;
         return p;
     }
 
