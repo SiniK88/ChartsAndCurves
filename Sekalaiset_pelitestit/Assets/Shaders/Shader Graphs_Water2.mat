@@ -41,9 +41,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _NormalStrenght: 0.5
+    - _NormalStrenght: 0.63
+    - _Smoothness: 0.62
     - _Strength: 1.46
     m_Colors:
-    - _DeepWaterColor: {r: 0, g: 0.054413438, b: 0.6415094, a: 0}
-    - _ShallowWaterColor: {r: 0.40094337, g: 0.6741086, b: 1, a: 0}
+    - _DeepWaterColor: {r: 0, g: 0.31192183, b: 1, a: 0}
+    - _ShallowWaterColor: {r: 0, g: 0.6277771, b: 1, a: 0}
   m_BuildTextureStacks: []
