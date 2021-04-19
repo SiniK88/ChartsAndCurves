@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Foam_Texture:
+        m_Texture: {fileID: 2800000, guid: 33793219ef59a1c4d9f41ce8b63b0bb2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - MainNormal:
         m_Texture: {fileID: 2800000, guid: 33793219ef59a1c4d9f41ce8b63b0bb2, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -40,6 +44,27 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Displacement: 0.02
+    - Foam_Distance: 0.14
+    - Main_Wave_Speed: 3
+    - Second_Wave_Speed: 5
+    - Side_Smoothness: 0.06
+    - Smoothness: 0.8
+    - Tide_Frequency: 1
+    - depth: 5.59
+    - depth_Strenght: 0.08
+    - foam_Strenght: 0.12
+    - normal_Strength: 0.72
+    m_Colors:
+    - Dark_Color: {r: 0, g: 0.07319455, b: 0.4245283, a: 0}
+    - Foam_Color: {r: 1, g: 0.77862555, b: 0.41981128, a: 0.5372549}
+    - Foam_Texture_Tiling: {r: 4, g: 5, b: 0, a: 0}
+    - Light_Color: {r: 0, g: 1, b: 0.9411764, a: 0}
+    - Main_Normal_Tiling: {r: 1, g: 1, b: 1, a: 0}
+    - Second_Normal_Tiling: {r: 1, g: 1, b: 1, a: 0}
+    - SideSmoothness: {r: 1, g: 0.6039734, b: 0, a: 0.6392157}
+    - Side_Bottom_Color: {r: 0.09011214, g: 0.17897859, b: 0.254717, a: 0}
+    - Side_Top_Color: {r: 0.2028302, g: 0.5523883, b: 1, a: 0}
+    - Smoothness_1: {r: 0.89629996, g: 1, b: 0, a: 0.5960785}
   m_BuildTextureStacks: []
